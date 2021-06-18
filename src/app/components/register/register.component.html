@@ -1,0 +1,45 @@
+<div class="container mt-4">
+    <h2>{{title}}</h2>
+
+    <div *ngIf="status == 'success'" class="alert alert-success">
+        El registro se ha completado correctamente. Inicia sesión <a [routerLink]="['/login']">aquí</a>
+    </div>
+
+    <div *ngIf="status == 'exist'" class="alert alert-danger">
+        El usuario ya existe. Inicia sesión <a [routerLink]="['/login']">aquí</a>
+    </div>
+
+    <div *ngIf="status == 'error'" class="alert alert-danger">
+        El registro NO se ha completado. Intenta de nuevo.
+    </div>
+
+    <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm);" class="col-md-6 mt-5" action="" method="post">
+        <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" name="name" #name="ngModel" [(ngModel)]="user.name" class="form-control" required>
+            <span *ngIf="!name.valid && name.touched">El nombre es obligatorio</span>
+        </div>
+
+        <div class="form-group">
+            <label for="surname">Apellidos</label>
+            <input type="text" name="surname" #surname="ngModel" [(ngModel)]="user.surname"  class="form-control" required>
+            <span *ngIf="!surname.valid && surname.touched">Los apellidos son obligatorios</span>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" name="email" #email="ngModel" [(ngModel)]="user.email"  class="form-control" required>
+            <span *ngIf="!email.valid && email.touched">El email es obligatorio</span>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password"  class="form-control" required>
+            <span *ngIf="!password.valid && password.touched">La contraseña es obligatoria</span>
+        </div>
+
+        <div class="form-group mt-4 ms-auto">
+            <button class="btn btn-success" type="submit">Registrarse</button>
+        </div>
+    </form>
+</div>

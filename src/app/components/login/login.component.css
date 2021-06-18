@@ -1,0 +1,10 @@
+@media (max-width: 720px) {
+    .caja-azul{
+        width: 100%;
+    }
+}
+@media (min-width: 719px) {
+    .caja-azul{
+        width: 50%;
+    }
+}
