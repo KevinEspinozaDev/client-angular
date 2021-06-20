@@ -10,13 +10,19 @@ import { RegisterComponent } from './components/register/register.component';
 import { UserService } from './services/user.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DefaultComponent } from './components/default/default.component';
+import { CarNewComponent } from './components/car-new/car-new.component';
+import { CarEditComponent } from './components/car-edit/car-edit.component';
+import { CarDetailComponent } from './components/car-detail/car-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    DefaultComponent
+    DefaultComponent,
+    CarNewComponent,
+    CarEditComponent,
+    CarDetailComponent,
   ],
   imports: [
     BrowserModule,

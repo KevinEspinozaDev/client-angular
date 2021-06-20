@@ -28,7 +28,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(){
-    console.log("Login.component cargado correctamente.");
     this.logout();
   }
 

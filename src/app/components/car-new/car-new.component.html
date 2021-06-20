@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="col-12 col-md-6 mt-4 ">
+        <h2>{{ page_title }}</h2>
+        <hr>
+
+        <div *ngIf="status_car == 'error'" class="alert alert-danger">
+            El auto no se ha guardado correctamente. Inténtelo de nuevo.
+        </div>
+
+        <div *ngIf="status_car == 'success'" class="alert alert-success">
+            El auto se guardó exitosamente.
+        </div>
+
+        <form #carNew="ngForm" (ngSubmit)="onSubmit(carNew)" method="POST">
+            <div class="form-group my-2">
+                <label for="title">Título</label>
+                <input type="text" name="title" id="title" class="form-control" #title="ngModel" [(ngModel)]="car.title" required>
+                
+                <span class="text-danger" *ngIf="!title.valid && title.touched">El título no es válido.</span>
+            </div>
+
+            <div class="form-group my-2">
+                <label for="description">Descripción</label>
+                <textarea name="description" id="description" class="form-control" #description="ngModel" [(ngModel)]="car.description" cols="10" required></textarea>
+                
+                <span class="text-danger" *ngIf="!description.valid && description.touched">La descripción no es válida.</span>
+            </div>
+
+            <div class="form-group my-2">
+                <label for="price">Precio</label>
+                <input type="number" name="price" id="price" class="form-control" #price="ngModel" [(ngModel)]="car.price" required>
+                
+                <span class="text-danger" *ngIf="!price.valid && price.touched">El precio no es válido.</span>
+            </div>
+
+            <div class="form-group my-2">
+                <label for="status">¿A la venta?</label>
+                <select required name="status" class="form-select" id="status" #status="ngModel" [(ngModel)]="car.status">
+                    <option value="true">Sí</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+
+            <div class="form-group my-3">
+                <input type="submit" value="Guardar" class="btn btn-success" [disabled]="!carNew.form.valid">
+            </div>
+        </form>
+    </div>
+</div>

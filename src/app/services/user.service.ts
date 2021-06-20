@@ -51,7 +51,7 @@ export class UserService {
   
     let headers: Object = {
       headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded'),
-      responseType: 'json',
+      responseType: "json",
     }
 
     //let header = new HttpHeaders().append('Content Type', 'application/x-www-form-urlencoded');
