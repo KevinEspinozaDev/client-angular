@@ -13,6 +13,7 @@ import { DefaultComponent } from './components/default/default.component';
 import { CarNewComponent } from './components/car-new/car-new.component';
 import { CarEditComponent } from './components/car-edit/car-edit.component';
 import { CarDetailComponent } from './components/car-detail/car-detail.component';
+import { CarService } from './services/car.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { CarDetailComponent } from './components/car-detail/car-detail.component
     HttpClientModule,
     FontAwesomeModule
   ],
-  providers: [UserService
+  providers: [UserService, CarService
   ],
   bootstrap: [AppComponent]
 })

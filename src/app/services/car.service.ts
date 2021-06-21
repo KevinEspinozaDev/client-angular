@@ -48,4 +48,8 @@ export class CarService {
     return this.__http.get(this.url+'cars', headers);
   }
 
+  getCar(id:any): Observable<any>{
+    return this.__http.get(this.url+"cars/"+id);
+  }
+
 }

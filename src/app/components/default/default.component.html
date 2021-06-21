@@ -18,14 +18,15 @@
         </thead>
         <tbody>
             <tr *ngFor="let car of cars" scope="row" class="py-3">
-                <th scope="col">{{ car.id }}</th>
+                <td scope="col">{{ car.id }}</td>
                 <td scope="col" class="col-6"><b>{{ car.title }}</b></td>
                 <td scope="col">${{ car.price }}</td>
                 <td scope="col" class="text-success" *ngIf="car.status == 'true'">En Venta</td>
                 <td scope="col" class="text-danger" *ngIf="car.status == 'false'">No Disponible</td>
                 <td scompe="col">
-                    <a [routerLink]="['editar-coche', car.id]" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i> Eliminar</a>
+                    <a [routerLink]="['car', car.id]" class="btn btn-sm btn-success"><i class="fa fa-eye"></i> Ver</a>
                     <a [routerLink]="['editar-coche', car.id]" class="btn btn-sm btn-info my-1 mx-lg-1"><i class="fa fa-edit"></i> Editar</a>
+                    <a [routerLink]="['editar-coche', car.id]" class="btn btn-sm btn-danger my-1 mx-lg-1"><i class="fa fa-trash"></i> Eliminar</a>
                 </td>
             </tr>
         </tbody>
