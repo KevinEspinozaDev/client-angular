@@ -27,14 +27,11 @@ export class DefaultComponent implements OnInit {
   }
 
   ngOnInit(){
-    console.log(this._userService);
-
     this._carService.getCars().subscribe(
       response => {
         if (response.status == 'success') {
           this.cars = response.cars;
         }
-        console.log(response);
       },
       error => {
         console.log(<any>error);

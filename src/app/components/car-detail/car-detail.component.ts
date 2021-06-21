@@ -13,7 +13,8 @@ import { HttpClient } from '@angular/common/http';
 export class CarDetailComponent implements OnInit {
 
   title:string;
-  car: Car;
+  status:string;
+  car:Car;
 
   constructor(
     public _route: ActivatedRoute,
@@ -23,12 +24,12 @@ export class CarDetailComponent implements OnInit {
     
   ) { 
     this.title = "Detalles";
+    this.status = "";
     this.car = new Car(1, '', '', 1, '', null, null);
    }
 
   ngOnInit(): void {
     this.getCar();
-    console.log(this._carService);
   }
 
   getCar(){
@@ -38,16 +39,17 @@ export class CarDetailComponent implements OnInit {
 
         this._carService.getCar(id).subscribe(
           response => {
-            
-            if (response.status = 'success') {
+            console.log(response);
+            if (response.status == 'success') {
               this.car = response.car;
-              
+              this.status = 'success';
             }else{
               this._router.navigate(['home']);
             }
           },
           error => {
             console.log(<any>error);
+            this.status = 'error';
           }
         )
       });

@@ -33,7 +33,9 @@ import { CarService } from './services/car.service';
     HttpClientModule,
     FontAwesomeModule
   ],
-  providers: [UserService, CarService
+  providers: [
+    UserService, 
+    CarService
   ],
   bootstrap: [AppComponent]
 })

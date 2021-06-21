@@ -1,3 +1,18 @@
-<p>car-detail works!</p>
+<div class="container col-md-12 mt-3" *ngIf="status == 'error'">
+    <div class="alert alert-danger">No existe el auto especificado.
+        <a [routerLink]="['/']">Volver al Home</a>
+    </div>
+</div>
 
-{{car.title}}
+<div class="container col-md-12 mt-3" *ngIf="status != 'error'">
+    <h2>{{ title }}</h2>
+    <hr>
+
+    <h4>{{ car.title }}</h4>
+    <p>
+        {{ car.description }}
+    </p>
+    <p>
+        ${{ car.price }} <span *ngIf="car.status == 'true'" class="text-success"> - En Venta</span>
+    </p>
+</div>

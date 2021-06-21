@@ -11,7 +11,7 @@
             El auto se guardó exitosamente.
         </div>
 
-        <form #carNew="ngForm" (ngSubmit)="onSubmit(carNew)" method="POST">
+        <form #carNew="ngForm" (ngSubmit)="onSubmit(carNew)" method="POST" *ngIf="car">
             <div class="form-group my-2">
                 <label for="title">Título</label>
                 <input type="text" name="title" id="title" class="form-control" #title="ngModel" [(ngModel)]="car.title" required>
