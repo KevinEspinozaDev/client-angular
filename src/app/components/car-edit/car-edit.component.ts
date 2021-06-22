@@ -25,7 +25,7 @@ export class CarEditComponent implements OnInit {
     public _userService: UserService,
     public _carService: CarService,
   ) { 
-    this.page_title = "Crear nuevo auto";
+    this.page_title = "Editar auto";
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
     this.car = new Car(1, '', '', 1, '', null, null);
@@ -36,40 +36,39 @@ export class CarEditComponent implements OnInit {
     if (this.identity == null) {
       this._router.navigate(['/login']);
     }else{
-      // Obtener objeto car
-      this.getCar();
+      this.car = new Car(1, '', '', 1, '', null, null);
+      this._route.params.subscribe(
+        params => {
+          let id =+ params['id'];
+          // Obtener objeto car
+          this.getCar(id);
+      });
     }
   }
 
   onSubmit(form:any){
-    this._carService.create(this.token, this.car).subscribe(
+    console.log(this._carService);
+    this._carService.update(this.token, this.car, this.car.id).subscribe(
       response => {
-        
-          this.car = response.car;
-          console.log(response);
+        response = response[0];
         if (response.status == 'success') {
           this.status_car = 'success';
-          this._router.navigate(['/']);
+          this.car = response.car;
+          //this._router.navigate(['/car', this.car.id]);
         }else{
           this.status_car = 'error';
         }
-        
       },
       error => {
-        console.log(<any>error);
         this.status_car = 'error';
-      } 
-    );
+        console.log(<any>error);
+      });
   }
 
-  getCar(){
-    this._route.params.subscribe(
-      params => {
-        let id =+ params['id'];
+  getCar(id:any){
 
         this._carService.getCar(id).subscribe(
           response => {
-            console.log(response);
             if (response.status == 'success') {
               this.car = response.car;
             }else{
@@ -78,9 +77,7 @@ export class CarEditComponent implements OnInit {
           },
           error => {
             console.log(<any>error);
-          }
-        )
-      });
+          });
   }
 
 }

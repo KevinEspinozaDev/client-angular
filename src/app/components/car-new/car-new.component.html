@@ -7,8 +7,13 @@
             El auto no se ha guardado correctamente. Inténtelo de nuevo.
         </div>
 
-        <div *ngIf="status_car == 'success'" class="alert alert-success">
-            El auto se guardó exitosamente.
+        <div *ngIf="status_car == 'success'">
+            <div class="alert alert-success">
+                El auto se guardó exitosamente.
+            </div>
+            <div>
+                <a [routerLink]="['/']" class="btn btn-info text-white">Volver</a>
+            </div>
         </div>
 
         <form #carNew="ngForm" (ngSubmit)="onSubmit(carNew)" method="POST" *ngIf="car">

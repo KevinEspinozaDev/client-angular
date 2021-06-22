@@ -26,7 +26,7 @@
                 <td scompe="col">
                     <a [routerLink]="['car', car.id]" class="btn btn-sm btn-success"><i class="fa fa-eye"></i> Ver</a>
                     <a [routerLink]="['edit-car', car.id]" class="btn btn-sm btn-info my-1 mx-lg-1"><i class="fa fa-edit"></i> Editar</a>
-                    <a [routerLink]="['editar-coche', car.id]" class="btn btn-sm btn-danger my-1 mx-lg-1"><i class="fa fa-trash"></i> Eliminar</a>
+                    <a (click)="deleteCar(car.id)" class="btn btn-sm btn-danger my-1 mx-lg-1"><i class="fa fa-trash"></i> Eliminar</a>
                 </td>
             </tr>
         </tbody>

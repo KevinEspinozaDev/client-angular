@@ -3,6 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { Car } from 'src/app/models/car';
 import { CarService } from 'src/app/services/car.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-car-new',
@@ -48,7 +49,6 @@ export class CarNewComponent implements OnInit {
           console.log(response);
         if (response.status == 'success') {
           this.status_car = 'success';
-          this._router.navigate(['/']);
         }else{
           this.status_car = 'error';
         }

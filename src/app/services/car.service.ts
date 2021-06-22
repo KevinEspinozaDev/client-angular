@@ -38,7 +38,33 @@ export class CarService {
     return this.__http.post(this.url+'cars', params, headers);
     
   }
+  
+  update(token:any, car:Car, id:any): Observable<any>{
+    let json = JSON.stringify(car);
+    let params = "json="+json;
 
+    let headers: Object = {
+      headers: new HttpHeaders()
+      .set('Content-Type', 'application/x-www-form-urlencoded')
+      .set('Authorization', token),
+      responseType: "json",
+    }
+
+    return this.__http.put(this.url + 'cars/'+id, params, headers);
+  }
+
+  delete(token:any, id:any) : Observable<any>{
+    let headers: Object = {
+      headers: new HttpHeaders()
+      .set('Content-Type', 'application/x-www-form-urlencoded')
+      .set('Authorization', token),
+      responseType: "json",
+    }
+
+    return this.__http.delete(this.url+'cars/'+id, headers);
+  }
+
+  
   getCars(): Observable<any>{
     let headers: Object = {
       headers: new HttpHeaders({
